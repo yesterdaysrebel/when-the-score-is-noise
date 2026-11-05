@@ -1,0 +1,5 @@
+This LoRA adapter is a model derivative of Gemma 4 (google/gemma-4-31B-it-qat-q4_0-unquantized), trained on outputs
+of Gemma 4. Gemma is provided under and subject to the Gemma Terms of Use found at https://ai.google.dev/gemma/terms.
+Use of this adapter must comply with those terms, including the Gemma Prohibited Use Policy
+(https://ai.google.dev/gemma/prohibited_use_policy). The Apache-2.0 licence of this repository covers its code and
+derived data, not this adapter.

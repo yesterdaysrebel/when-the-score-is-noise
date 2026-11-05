@@ -1,0 +1,35 @@
+{
+ "train_log_source": "final manifest (held-out evals only)",
+ "train_log": [
+  {
+   "event": "eval",
+   "step": 0,
+   "holdout_loss": 0.1373
+  },
+  {
+   "event": "eval",
+   "step": 22,
+   "holdout_loss": 0.08346
+  },
+  {
+   "event": "eval",
+   "step": 44,
+   "holdout_loss": 0.0804
+  }
+ ],
+ "direction_check": {
+  "base_mean_logprob": -0.13398557048385717,
+  "adapter_mean_logprob": -0.057416023976897976,
+  "mean_gain": 0.0765695465069592,
+  "gain_ci95": [
+   0.031583707736594316,
+   0.14015419018311
+  ],
+  "positions": 320,
+  "coverage": 1.0,
+  "tok_per_s": {
+   "base": 37.47,
+   "adapter": 33.13
+  }
+ }
+}

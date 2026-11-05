@@ -1,0 +1,43 @@
+{
+ "holdout_loss": {
+  "step 0": 0.1373,
+  "step 22": 0.08346,
+  "step 44": 0.0804
+ },
+ "served_mean_logprob": {
+  "base": -0.134,
+  "adapter": -0.057,
+  "gain": 0.077,
+  "ci95": [
+   0.032,
+   0.14
+  ],
+  "positions": 320,
+  "coverage": 1.0
+ },
+ "tok_per_s": {
+  "base": 37.47,
+  "adapter": 33.13
+ },
+ "local_solved_of_60": {
+  "base A": 23,
+  "base B": 22,
+  "adapter A": 19,
+  "adapter B": 27
+ },
+ "hidden": {
+  "base": [
+   0.15,
+   0.17,
+   0.15,
+   0.18,
+   0.13,
+   0.15,
+   0.17,
+   0.13
+  ],
+  "c8": [
+   0.13
+  ]
+ }
+}

@@ -1,0 +1,217 @@
+{
+ "source": "SWE-rebench tasks (CC-BY-4.0; Badertdinov et al. 2025, arXiv:2505.20411, https://huggingface.co/datasets/nebius/SWE-rebench); agent runs by Gemma-4-31B (W4A16) under the competition harness",
+ "what": "audit, by a separate read-only LLM agent reading each full trace, of a sample of the self-distillation training runs kept (20) and dropped (3) by filter v2",
+ "headline": {
+  "kept_sample_verdicts": {
+   "KEEP": 12,
+   "DROP": 7,
+   "UNSURE": 1
+  },
+  "kept_runs_total": 159,
+  "solved_runs_total": 178,
+  "bad_share_point_estimate": 0.35,
+  "bad_share_wilson95": [
+   0.18,
+   0.57
+  ],
+  "cheating_signs": 0,
+  "filter_v3_rules_flag": {
+   "sample": "8 of 20",
+   "all_kept": "67 of 159",
+   "note": "counted when the v3 rules were proposed, on the runs filter v2 kept; the rules as implemented were applied to all 178 solved runs"
+  },
+  "training_set": {
+   "main_run_kept": "113 of 178 solved runs",
+   "pilot_run_kept": "11 of 18 solved runs",
+   "total_runs": 124,
+   "re_audited": false
+  }
+ },
+ "kept_sample": [
+  {
+   "n": 1,
+   "instance_id": "psf__black-2758",
+   "llm_calls": "18",
+   "compactions": 0,
+   "verdict": "KEEP",
+   "reasons": "Core fix (pattern-matching grammar tried last by default) matches the gold's main change; gold also reworked error reporting. Verified with a repro script, removed it, resubmitted. Never ran project tests."
+  },
+  {
+   "n": 2,
+   "instance_id": "sympy__sympy-27462",
+   "llm_calls": "33+1",
+   "compactions": 1,
+   "verdict": "DROP",
+   "reasons": "Fix equals gold, but: two `read_file` calls with leaked tool-call syntax inside the path, one turn whose content is raw unparsed tool-call text (finish = stop) followed by a missing seq number, ~12 calls of aimless reading in a docstring, hit the 28-call budget, submitted without running its check (\"confident\"), and left `reproduce_issue.py` in the scored patch."
+  },
+  {
+   "n": 3,
+   "instance_id": "beetbox__beets-4549",
+   "llm_calls": "25+1",
+   "compactions": 1,
+   "verdict": "DROP",
+   "reasons": "Extracts the remixer field like gold, but never adds it to the library item model (so it is not stored, which was the user's actual complaint), invents a new config option the issue only wished for, and never runs anything after editing."
+  },
+  {
+   "n": 4,
+   "instance_id": "kjd__idna-83",
+   "llm_calls": "20",
+   "compactions": 0,
+   "verdict": "KEEP",
+   "reasons": "Clean read → reproduce → edit → verify → edge cases → clean up. Equivalent to gold (empty label falls through to the existing \"Empty Label\" error). Four separate tiny repro files is a bit wasteful."
+  },
+  {
+   "n": 5,
+   "instance_id": "agronholm__sqlacodegen-375",
+   "llm_calls": "21+1",
+   "compactions": 1,
+   "verdict": "DROP",
+   "reasons": "Fix is narrower than gold (identity check against the base decorator class instead of a subclass check). Its own repro never showed the bug; when reverting the fix still did not crash, the agent re-applied it anyway (\"regardless\"). Last run errored. 43-line `repro_bug.py` left in the scored patch."
+  },
+  {
+   "n": 6,
+   "instance_id": "GenericMappingTools__pygmt-1484",
+   "llm_calls": "27+1",
+   "compactions": 1,
+   "verdict": "KEEP",
+   "reasons": "Reproduced the segfault, fixed in `dataarray_to_matrix` like gold, reverted to confirm the crash returns, re-applied, cleaned up. After compaction it forgot its own scratch file name and talked about a \"previous agent\" — harmless but odd."
+  },
+  {
+   "n": 7,
+   "instance_id": "pika__pika-1233",
+   "llm_calls": "29+1",
+   "compactions": 1,
+   "verdict": "UNSURE",
+   "reasons": "Valid alternative fix (register through the channel wrapper that already converts four args into one message object; gold changed the method signature). But the targeted test run failed and the agent dismissed it as \"pre-existing\" without checking — a habit we do not want to teach."
+  },
+  {
+   "n": 8,
+   "instance_id": "levlaz__circleci.py-28",
+   "llm_calls": "13",
+   "compactions": 0,
+   "verdict": "DROP",
+   "reasons": "Guessed the API: sends an `ssh` body flag to the retry endpoint, while the real fix uses a separate SSH endpoint. Passes only because the test mocks `_request`. Process was otherwise tidy. Wrong-but-passing."
+  },
+  {
+   "n": 9,
+   "instance_id": "DavidVujic__python-polylith-76",
+   "llm_calls": "18",
+   "compactions": 0,
+   "verdict": "KEEP",
+   "reasons": "Uses `difflib.get_close_matches` as the issue suggests, verified with a script, removed it. About 7 calls hunting for test files."
+  },
+  {
+   "n": 10,
+   "instance_id": "adamchainz__ec2-metadata-350",
+   "llm_calls": "10",
+   "compactions": 0,
+   "verdict": "KEEP",
+   "reasons": "Essentially the gold change; verified with a temporary pytest file, deleted it. Model example."
+  },
+  {
+   "n": 11,
+   "instance_id": "E3SM-Project__e3sm_to_cmip-203",
+   "llm_calls": "15+1",
+   "compactions": 1,
+   "verdict": "KEEP",
+   "reasons": "Identical to gold (raise → warning in three functions). Ran the test file; the failures were old tests that expect the old exception, and the agent said so correctly."
+  },
+  {
+   "n": 12,
+   "instance_id": "fjosw__pyerrors-139",
+   "llm_calls": "20",
+   "compactions": 0,
+   "verdict": "KEEP",
+   "reasons": "Removes the automatic zero-filtering as the issue proposes (made the helper public instead of deleting it). Verified, cleaned up. Repro only run after the fix."
+  },
+  {
+   "n": 13,
+   "instance_id": "hh-h__aiohttp-swagger3-52",
+   "llm_calls": "34+1",
+   "compactions": 1,
+   "verdict": "DROP",
+   "reasons": "Two `edit_file` calls with leaked syntax that the harness rejected (missing `old_string`), sent twice in a row. Turns the public `StringFormat` enum into a plain class — a wider API change than gold's one-method fix. Used all 28 calls; ~5 calls wandering for tests."
+  },
+  {
+   "n": 14,
+   "instance_id": "iterative__dvc-6519",
+   "llm_calls": "31+2",
+   "compactions": 2,
+   "verdict": "DROP",
+   "reasons": "Good diagnosis and a correct fix (same logic as gold), but its verification script failed three times and never passed, the budget ran out, it submitted on \"confident\", left a 42-line `repro_ssh_config.py` in the scored patch, and left an unused import. Also wrote to `~/.ssh/config` outside the workspace."
+  },
+  {
+   "n": 15,
+   "instance_id": "PennyLaneAI__pennylane-2525",
+   "llm_calls": "30+2",
+   "compactions": 2,
+   "verdict": "DROP",
+   "reasons": "The issue text already gives the fix. The agent spent ~26 calls wandering, re-found the same class after each compaction, had one failed edit, ran out of budget before running its check, and the run ends on a `submit_patch` call with no logged result and no final answer."
+  },
+  {
+   "n": 16,
+   "instance_id": "FactoryBoy__factory_boy-841",
+   "llm_calls": "12",
+   "compactions": 0,
+   "verdict": "KEEP",
+   "reasons": "Reproduce → fix → verify → check other callers → clean up. Fix renames the clashing parameter (narrower than gold, which stops passing it by keyword at all) — acceptable."
+  },
+  {
+   "n": 17,
+   "instance_id": "adbar__simplemma-150",
+   "llm_calls": "14",
+   "compactions": 0,
+   "verdict": "KEEP",
+   "reasons": "Elegant equivalent fix (one minus the unknown share); reproduced, verified, ran the test file, cleaned up."
+  },
+  {
+   "n": 18,
+   "instance_id": "ESSS__oop-ext-21",
+   "llm_calls": "24",
+   "compactions": 0,
+   "verdict": "KEEP",
+   "reasons": "Equivalent to gold (mock objects count as methods in `_IsMethod`). Reproduced the full failure first. ~5 calls hunting for tests; a pointless ImportError guard around a standard-library import."
+  },
+  {
+   "n": 19,
+   "instance_id": "christiansandberg__canopen-446",
+   "llm_calls": "24+1",
+   "compactions": 1,
+   "verdict": "KEEP",
+   "reasons": "Guards the missing COB-ID in `PdoMap.save` and fixes the empty-map check. Gold returns early instead; the agent still writes other settings for an unconfigured PDO, which is plausible but less clean. Repro only run after the fix."
+  },
+  {
+   "n": 20,
+   "instance_id": "r1chardj0n3s__parse-184",
+   "llm_calls": "22+1",
+   "compactions": 1,
+   "verdict": "KEEP",
+   "reasons": "Same two changes as gold (field-name regex and group-name mapping); reproduced, verified, ran both test files. Compaction only before the final answer."
+  }
+ ],
+ "dropped_sample": [
+  {
+   "instance_id": "vyperlang__vyper-3498",
+   "filter_reason": "repeated-call loop",
+   "verdict": "Correct drop. 37 near-identical `write_file` calls in a row, each rejected by the harness for a missing parameter (rejected calls apparently do not count against the 28-call budget, so the loop ran on), 55 calls in total, scratch `repro.py` in the scored patch."
+  },
+  {
+   "instance_id": "bskinn__sphobjinv-226",
+   "filter_reason": "edited existing test file",
+   "verdict": "Correct under the test-file rule, but a near miss. The fix is the same as gold. A maintainer hint in the prompt told it to edit the test; it did, noticed the rule, and reverted it on the next call. The final patch is clean. Keeping it dropped is still right, because training on the run would include the test-edit turn."
+  },
+  {
+   "instance_id": "pre-commit__pre-commit-1997",
+   "filter_reason": "edited existing test / command may change it",
+   "verdict": "Correct drop. Fix matches gold, but it added a test to an existing test file, ran it, then undid it with `git checkout`. It also has a `read_file` call with a malformed argument name (an extra quote in the key), which the malformed-call rule below would catch on its own."
+  }
+ ],
+ "filter_v3_rules_added": [
+  "no successful python/pytest run after the last edit",
+  "scratch file in the scored patch",
+  "tool budget exhausted",
+  "malformed tool call",
+  "same call twice in a row",
+  "no final answer or no submit_patch"
+ ]
+}

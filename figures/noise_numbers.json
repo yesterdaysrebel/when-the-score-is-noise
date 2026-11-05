@@ -1,0 +1,104 @@
+{
+ "runs": [
+  "base A",
+  "base B",
+  "adapter A",
+  "adapter B"
+ ],
+ "solved": [
+  23,
+  22,
+  19,
+  27
+ ],
+ "tasks": 60,
+ "flips": {
+  "base A vs base B": 9,
+  "base A vs adapter A": 6,
+  "base A vs adapter B": 10,
+  "base B vs adapter A": 5,
+  "base B vs adapter B": 7,
+  "adapter A vs adapter B": 10
+ },
+ "tasks_always_solved": 17,
+ "never_solved": 29,
+ "sometimes": 14,
+ "per_task_model": {
+  "beta_a": 0.15,
+  "beta_b": 0.235,
+  "sd_of_one_run_solves": 2.2,
+  "sd_raw_rates": 1.71,
+  "p_same_seed_gap_at_least_adapter_pair": 0.0149,
+  "p_largest_of_all_pairwise_gaps_at_least_that": 0.071
+ },
+ "sd_of_observed_run_solves": 3.3,
+ "power_by_runs_per_arm": {
+  "1": {
+   "critical_diff": 6.0,
+   "power": {
+    "2": 0.07,
+    "4": 0.21,
+    "6": 0.42,
+    "8": 0.69
+   }
+  },
+  "2": {
+   "critical_diff": 4.0,
+   "power": {
+    "2": 0.16,
+    "4": 0.46,
+    "6": 0.79,
+    "8": 0.95
+   }
+  },
+  "3": {
+   "critical_diff": 3.67,
+   "power": {
+    "2": 0.18,
+    "4": 0.59,
+    "6": 0.91,
+    "8": 0.99
+   }
+  },
+  "5": {
+   "critical_diff": 2.6,
+   "power": {
+    "2": 0.3,
+    "4": 0.83,
+    "6": 0.99,
+    "8": 1.0
+   }
+  },
+  "10": {
+   "critical_diff": 1.9,
+   "power": {
+    "2": 0.52,
+    "4": 0.98,
+    "6": 1.0,
+    "8": 1.0
+   }
+  }
+ },
+ "power_run_level_gain4": {
+  "1": 0.13,
+  "2": 0.23,
+  "3": 0.32,
+  "5": 0.48,
+  "10": 0.77
+ },
+ "adapter_minus_base": {
+  "solves": 0.5,
+  "task_paired_bootstrap_ci95": [
+   -2.5,
+   3.5
+  ]
+ },
+ "hidden_base": {
+  "draws": 8,
+  "mean": 0.154,
+  "sd": 0.018,
+  "sd_tasks_of_60": 1.1,
+  "min": 0.13,
+  "max": 0.18
+ }
+}

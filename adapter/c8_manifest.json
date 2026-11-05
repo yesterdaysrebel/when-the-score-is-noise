@@ -1,0 +1,68 @@
+{
+ "base_config_sha256": "95b105ad23b315067985415e721ab9c19cfcf90918b34ea0fa479a08489d86b7",
+ "data": {
+  "files": {
+   "training sequences, main run (lost; hash kept for the record)": "311a857d21014198946a77f7d5d8d5e05f7d0c66138135eb010f901168e6d571",
+   "training sequences, pilot run (lost; hash kept for the record)": "04d1c0f22a928b2e2add98b13c3121ef7b1db0e83d36691403db96ea21d3fe12"
+  },
+  "sequences": 188,
+  "tasks": 124,
+  "train_sequences": 176,
+  "holdout_sequences": 12,
+  "holdout_tasks": [
+   "Deltares__pyflwdir-41",
+   "getsentry__sentry-python-4179",
+   "glotzerlab__signac-622",
+   "google__flax-4317",
+   "marcosschroh__dataclasses-avroschema-172",
+   "miurahr__aqtinstall-550",
+   "stephenhillier__starlette_exporter-15",
+   "zopefoundation__zope.component-58"
+  ],
+  "train_loss_tokens": 544804,
+  "train_tokens": 2054986
+ },
+ "lora": {
+  "r": 8,
+  "alpha": 16,
+  "targets": "q_proj,o_proj",
+  "target_re": "^(?!.*vision)(?!.*audio).*\\.layers\\.\\d+\\.self_attn\\.(q_proj|o_proj)$"
+ },
+ "train": {
+  "lr": 0.0001,
+  "epochs": 2.0,
+  "accum": 8,
+  "steps": 44,
+  "seed": 20261021,
+  "max_len": 16384,
+  "quant": "nf4"
+ },
+ "losses": {
+  "holdout_before": 0.1373,
+  "holdout_step22": 0.08346,
+  "holdout_step44": 0.0804
+ },
+ "versions": {
+  "torch": "2.10.0",
+  "transformers": "5.13.1",
+  "peft": "0.21.2",
+  "accelerate": "1.15.0",
+  "safetensors": "0.8.0",
+  "bitsandbytes": "0.46.1"
+ },
+ "adapter_files": {
+  "adapter_model.safetensors": "92cff0099e35e5115e8f457875cf66072dd8afedf964285ed4afa70d6f68d066",
+  "adapter_config.json": "325ead00302406e4ded72c3fea2b5ad9b4e8991d26da9e2fbc712815a662ceda"
+ },
+ "adapter_keys": 240,
+ "host_key_format": true,
+ "key_sample": [
+  "base_model.model.model.language_model.layers.0.self_attn.o_proj.lora_A.weight",
+  "base_model.model.model.language_model.layers.0.self_attn.o_proj.lora_B.weight"
+ ],
+ "base_model": "google/gemma-4-31B-it-qat-q4_0-unquantized (loaded in 4-bit nf4 for training); served on the W4A16 build",
+ "released_adapter": {
+  "adapter_model.safetensors": "bf403c9948b16efe772b19e1ee1cf51040b12e3d7d2b9328ff739346b392effc",
+  "note": "the file in this folder: the trained f32 tensors cast to bf16 (largest change 5.4e-5), as served in every measurement; adapter_files above are the hashes of the f32 originals written by the trainer"
+ }
+}

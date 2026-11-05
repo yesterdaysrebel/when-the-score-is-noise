@@ -1,0 +1,6 @@
+When the Score Is Noise — code and data
+Copyright 2026 Irfan Paraniya
+
+Code and derived data: Apache License 2.0 (LICENSE).
+adapter/: subject to the Gemma Terms of Use (adapter/NOTICE).
+data/audit.json: refers to SWE-rebench (CC-BY-4.0); see README.md.

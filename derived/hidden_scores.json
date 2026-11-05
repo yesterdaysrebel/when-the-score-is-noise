@@ -1,0 +1,16 @@
+{
+ "note": "Kaggle leaderboard scores of our submissions (fraction of hidden tasks solved)",
+ "base": [
+  0.15,
+  0.17,
+  0.15,
+  0.18,
+  0.13,
+  0.15,
+  0.17,
+  0.13
+ ],
+ "c8": [
+  0.13
+ ]
+}

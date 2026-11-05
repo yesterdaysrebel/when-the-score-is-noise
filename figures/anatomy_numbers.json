@@ -1,0 +1,47 @@
+{
+ "time": {
+  "model_share": 0.959,
+  "reasoning_share_of_generated_chars": 0.715,
+  "tool_args_share": 0.2,
+  "tok_per_s_base": 32.6,
+  "tok_per_s_adapter": 29.4
+ },
+ "trajectory": {
+  "solved": {
+   "runs": 45,
+   "median_first_edit_call": 8,
+   "mean_calls": 21.4,
+   "compacted_share": 0.64,
+   "true_rereads_per_run": 1.5,
+   "rereads_after_compaction_share": 0.57
+  },
+  "unsolved: used budget": {
+   "runs": 55,
+   "median_first_edit_call": 17,
+   "mean_calls": 30.6,
+   "compacted_share": 1.0,
+   "true_rereads_per_run": 4.2,
+   "rereads_after_compaction_share": 0.6
+  },
+  "unsolved: stopped early": {
+   "runs": 20,
+   "median_first_edit_call": 9.5,
+   "mean_calls": 20.1,
+   "compacted_share": 0.6,
+   "true_rereads_per_run": 1.2,
+   "rereads_after_compaction_share": 0.56
+  }
+ },
+ "text_numbers": {
+  "completion_tokens_per_call_median": 127,
+  "completion_tokens_per_call_p99": 2413,
+  "completion_tokens_per_task": 8459,
+  "mean_minutes_per_task": 4.44,
+  "hours_per_60_task_run": 4.4,
+  "rereads_after_compaction_per_run": {
+   "solved": 0.85,
+   "unsolved: used budget": 2.52,
+   "unsolved: stopped early": 0.67
+  }
+ }
+}
