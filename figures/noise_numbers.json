@@ -94,11 +94,11 @@
   ]
  },
  "hidden_base": {
-  "draws": 8,
-  "mean": 0.154,
-  "sd": 0.018,
-  "sd_tasks_of_60": 1.1,
-  "min": 0.13,
+  "draws": 12,
+  "mean": 0.151,
+  "sd": 0.021,
+  "sd_tasks_of_60": 1.2,
+  "min": 0.12,
   "max": 0.18
  }
 }
